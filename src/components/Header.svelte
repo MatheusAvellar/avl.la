@@ -11,8 +11,15 @@
 <style>
 h1 {
   font-size: 3.5rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 span {
   color: #99999e;
+}
+@media screen and (max-width: 800px) {
+  h1 {
+    font-size: 2.5rem;
+  }
 }
 </style>
