@@ -51,14 +51,4 @@ ul {
   vertical-align: middle;
   box-sizing: border-box;
 }
-img {
-  width: 15rem;
-  padding: 0 1rem;
-  -webkit-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
-  user-drag: none;
-  user-select: none;
-  pointer-events: none;
-}
 </style>
