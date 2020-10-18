@@ -41,4 +41,7 @@ ul {
   flex-direction: row;
   gap: 1rem;
 }
+span {
+  color: #444;
+}
 </style>

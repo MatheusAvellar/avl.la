@@ -23,6 +23,19 @@
       </p>
     </article>
     <article>
+      <figure style="background-image:url(/preview/amendoim.png)"></figure>
+      <h3> amendo.im </h3>
+      <p>
+        Site inspirado no famoso <a href="http://pudim.com.br/"
+        rel="noopener noreferrer">pudim.com.br</a>, porém com temática de
+        amendoim.
+      </p>
+      <p>
+        <strong>Links:</strong>
+        <a href="https://amendo.im/">amendo.im</a>.
+      </p>
+    </article>
+    <article>
       <figure style="background-image:url(/preview/bandwidth-humana.png)"></figure>
       <h3> Bandwidth Humana </h3>
       <p>

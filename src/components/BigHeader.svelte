@@ -1,5 +1,6 @@
 <script>
   import Nav from "./Nav.svelte";
+  export let segment = "";
 </script>
 
 <header>
@@ -7,6 +8,7 @@
   <p>
     <i>Sommelier</i> de pizza, programador de inutilidades
   </p>
+  <Nav {segment}/>
 </header>
 
 <style>
