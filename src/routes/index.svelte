@@ -35,12 +35,28 @@
       Esse site ainda está em construção. Algumas coisas talvez mudem sem aviso!
     </p>
   </section>
+  <section>
+    <h2> FAQ </h2>
+    <article>
+      <h3> Sabor favorito de pizza? </h3>
+      <p>Margherita (tomate com manjericão) ou strogonoff.</p>
+    </article>
+  </section>
 </main>
 <Footer/>
 
 <style>
 section {
   margin-bottom: 2rem;
+}
+h2 {
+  margin-bottom: 1rem;
+}
+h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 1rem 0 .25rem;
+  color: #696969;
 }
 .column {
   columns: 2;

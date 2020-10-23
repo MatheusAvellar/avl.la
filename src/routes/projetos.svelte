@@ -17,10 +17,12 @@
         Blogzinho em que eu faço pesquisas e escrevo sobre coisas que eu
         descubro.
       </p>
-      <p>
-        <strong>Links:</strong>
-        <a href="https://o.amendo.im/">o.amendo.im</a>.
-      </p>
+      <article class="links">
+        <p>
+          <svg class="icon"><use href="#world"/></svg>
+          <a href="https://o.amendo.im/">o.amendo.im</a>
+        </p>
+      </article>
     </article>
     <article>
       <figure style="background-image:url(/preview/amendoim.png)"></figure>
@@ -30,10 +32,12 @@
         rel="noopener noreferrer">pudim.com.br</a>, porém com temática de
         amendoim.
       </p>
-      <p>
-        <strong>Links:</strong>
-        <a href="https://amendo.im/">amendo.im</a>.
-      </p>
+      <article class="links">
+        <p>
+          <svg class="icon"><use href="#world"/></svg>
+          <a href="https://amendo.im/">amendo.im</a>
+        </p>
+      </article>
     </article>
     <article>
       <figure style="background-image:url(/preview/bandwidth-humana.png)"></figure>
@@ -43,11 +47,16 @@
         de informação? Se um humano lendo e escrevendo substituísse, por exemplo,
         o 4G, quão menos eficiente seria?
       </p>
-      <p>
-        <strong>Links:</strong>
-        <a href="https://matheusavellar.github.io/bandwidth-humana/">matheusavellar.github.io/bandwidth-humana/</a>;
-        <a href="https://github.com/MatheusAvellar/bandwidth-humana">código-fonte</a>.
-      </p>
+      <article class="links">
+        <p>
+          <svg class="icon"><use href="#world"/></svg>
+          <a href="https://matheusavellar.github.io/bandwidth-humana/">matheusavellar.github.io/bandwidth-humana/</a>
+        </p>
+        <p>
+          <svg class="icon"><use href="#code"/></svg>
+          <a href="https://github.com/MatheusAvellar/bandwidth-humana">github.com/MatheusAvellar/bandwidth-humana</a>
+        </p>
+      </article>
     </article>
     <article>
       <figure style="background-image:url(/preview/troca-grana.png)"></figure>
@@ -57,10 +66,12 @@
         valores presentes em cédulas do real. Foi mencionado no <a href="https://www.cp2.g12.br/blog/labtijuca1/2019/11/21/sistema-monetario/"
         rel="noopener noreferrer">blog do Colégio Pedro II</a>.
       </p>
-      <p>
-        <strong>Links:</strong>
-        <a href="https://avellar.ml/trocagrana/">avellar.ml/trocagrana</a>.
-      </p>
+      <article class="links">
+        <p>
+          <svg class="icon"><use href="#world"/></svg>
+          <a href="https://avellar.ml/trocagrana/">avellar.ml/trocagrana</a>
+        </p>
+      </article>
     </article>
     <article>
       <figure style=""></figure>
@@ -70,10 +81,12 @@
         eles são renomeados (i.e. renomear `arquivo.jpg` para `arquivo.png`
         realmente converte a imagem para PNG).
       </p>
-      <p>
-        <strong>Links:</strong>
-        <a href="https://github.com/MatheusAvellar/fewd">código-fonte</a>.
-      </p>
+      <article class="links">
+        <p>
+          <svg class="icon"><use href="#code"/></svg>
+          <a href="https://github.com/MatheusAvellar/fewd">github.com/MatheusAvellar/fewd</a>
+        </p>
+      </article>
     </article>
     <article>
       <figure style="background-image:url(/preview/adobe-logo-generator.png)"></figure>
@@ -82,11 +95,16 @@
         Gerador de pseudo-logotipos que se parecem com logotipos de produtos da
         Adobe (ex. Photoshop, Illustrator, etc).
       </p>
-      <p>
-        <strong>Links:</strong>
-        <a href="https://matheusavellar.github.io/adobe-logos/">matheusavellar.github.io/adobe-logos</a>;
-        <a href="https://github.com/MatheusAvellar/adobe-logos">código-fonte</a>.
-      </p>
+      <article class="links">
+        <p>
+          <svg class="icon"><use href="#world"/></svg>
+          <a href="https://matheusavellar.github.io/adobe-logos/">matheusavellar.github.io/adobe-logos</a>
+        </p>
+        <p>
+          <svg class="icon"><use href="#code"/></svg>
+          <a href="https://github.com/MatheusAvellar/adobe-logos">github.com/MatheusAvellar/adobe-logos</a>
+        </p>
+      </article>
     </article>
     <article>
       <figure style="background-image:url(/preview/plates.png)"></figure>
@@ -95,11 +113,16 @@
         Site que verifica se palavras podem ser escritas como placas de
         trânsito.
       </p>
-      <p>
-        <strong>Links:</strong>
-        <a href="https://matheusavellar.github.io/plates/">matheusavellar.github.io/plates</a>;
-        <a href="https://github.com/MatheusAvellar/plates">código-fonte</a>.
-      </p>
+      <article class="links">
+        <p>
+          <svg class="icon"><use href="#world"/></svg>
+          <a href="https://matheusavellar.github.io/plates/">matheusavellar.github.io/plates</a>
+        </p>
+        <p>
+          <svg class="icon"><use href="#code"/></svg>
+          <a href="https://github.com/MatheusAvellar/plates">github.com/MatheusAvellar/plates</a>
+        </p>
+      </article>
     </article>
     <article>
       <figure style="background-image:url(/preview/centavo.png)"></figure>
@@ -107,11 +130,16 @@
       <p>
         Vale a pena se abaixar para pegar uma moeda de R$0,01?
       </p>
-      <p>
-        <strong>Links:</strong>
-        <a href="https://matheusavellar.github.io/centavo/">matheusavellar.github.io/centavo</a>;
-        <a href="https://github.com/MatheusAvellar/centavo">código-fonte</a>.
-      </p>
+      <article class="links">
+        <p>
+          <svg class="icon"><use href="#world"/></svg>
+          <a href="https://matheusavellar.github.io/centavo/">matheusavellar.github.io/centavo</a>
+        </p>
+        <p>
+          <svg class="icon"><use href="#code"/></svg>
+          <a href="https://github.com/MatheusAvellar/centavo">github.com/MatheusAvellar/centavo</a>
+        </p>
+      </article>
     </article>
     <article>
       <figure style="background-image:url(/preview/dun-machine.png)"></figure>
@@ -122,13 +150,24 @@
         sobre a quantidade de "dun"s em músicas.<br>…é mais legal do que soa,
         eu juro.
       </p>
-      <p>
-        <strong>Links:</strong>
-        <a href="https://matheusavellar.github.io/dun-machine/">matheusavellar.github.io/dun-machine</a>;
-        <a href="https://github.com/MatheusAvellar/dun-machine">código-fonte</a>.
-      </p>
+      <article class="links">
+        <p>
+          <svg class="icon"><use href="#world"/></svg>
+          <a href="https://matheusavellar.github.io/dun-machine/">matheusavellar.github.io/dun-machine</a>
+        </p>
+        <p>
+          <svg class="icon"><use href="#code"/></svg>
+          <a href="https://github.com/MatheusAvellar/dun-machine">github.com/MatheusAvellar/dun-machine</a>
+        </p>
+      </article>
     </article>
   </section>
+  <div hidden>
+    <svg>
+      <path id="world" d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+      <path id="code" d="M12.89,3L14.85,3.4L11.11,21L9.15,20.6L12.89,3M19.59,12L16,8.41V5.58L22.42,12L16,18.41V15.58L19.59,12M1.58,12L8,5.58V8.41L4.41,12L8,15.58V18.41L1.58,12Z" />
+    </svg>
+  </div>
 </main>
 <Footer/>
 
@@ -159,5 +198,20 @@ figure {
 
   background-color: #f2f2f2;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23dfdfdf' fill-opacity='1'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.links {
+  margin-top: 1rem;
+  padding: 0;
+}
+.links a[href] {
+  vertical-align: middle;
+}
+.icon {
+  fill: #444;
+  fill: var(--black);
+  height: 24px;
+  width: 24px;
+  vertical-align: middle;
+  box-sizing: border-box;
 }
 </style>
