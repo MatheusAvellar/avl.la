@@ -38,8 +38,13 @@
     <article>
       <h3> Navegador </h3>
       <p> <a rel="noopener noreferrer"
-        href="https://www.google.com/chrome/canary/">Chrome Canary</a>
+        href="https://www.google.com/chrome/beta/">Chrome Beta</a>
         – porque eu sou hipster
+      </p>
+      <p> (anteriormente <a rel="noopener noreferrer"
+        href="https://www.google.com/chrome/canary/">Chrome Canary</a>, porque
+        eu era ainda mais hipster, mas a instabilidade atrapalhava demais
+        minha vida)
       </p>
     </article>
     <article>
