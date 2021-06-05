@@ -18,15 +18,11 @@
         Apresentado na Jornada de Iniciação Científica (JIC) 2019.
       </p>
       <p>
-        <a href="/files/matheusavellar-paper.pdf">Paper</a>
+        <a href="/files/matheusavellar-paper-jic.pdf">Paper</a>
       </p>
       <p>
-        <a href="/files/matheusavellar-apresentacao-jic.pdf">Apresentação</a>
+        <a href="/files/matheusavellar-certificado-jic.pdf">Certificado</a>*
       </p>
-      <p>
-        <a href="/files/matheusavellar-certificado-jic.pdf">Certificado</a>
-      </p>
-      <br>
       <fieldset>
         <legend>Citação</legend>
         <cite>
@@ -36,6 +32,22 @@
           Científica, 27. Rio de Janeiro: CETEM/MCTIC, 2019.
         </cite>
       </fieldset>
+      <p>
+        <small>* Com nome digitado incorretamente, infelizmente</small>
+      </p>
+    </article>
+  </section>
+  <section>
+    <T2> Extras </T2>
+    <article>
+      <h3> GRIS </h3>
+      <p>
+        Integrante do Grupo de Respostas à Incidentes de Segurança (GRIS) de
+        janeiro/2018 a janeiro/2019.
+      </p>
+      <p>
+        <a href="/files/matheusavellar-certificado-gris.pdf">Certificado</a>
+      </p>
     </article>
   </section>
   <section>
@@ -99,6 +111,7 @@ a[href$=".pdf"] {
 }
 
 fieldset {
+  margin-top: 1em;
   border: 1px solid #d0d0d0;
   border-radius: 3px;
 }
