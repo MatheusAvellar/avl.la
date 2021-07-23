@@ -11,6 +11,35 @@
   <section>
     <T2> Projetos </T2>
     <article>
+      <figure style="background-image:url(/preview/lab.png);background-position-y:-70px"></figure>
+      <h3> avellab </h3>
+      <p>
+        Projetos experimentais que eu faço no meu tempo livre. Pode ser
+        considerado um portfólio!
+      </p>
+      <article class="links">
+        <p>
+          <svg class="icon"><use href="#world"/></svg>
+          <a href="https://lab.avl.la/">lab.avl.la</a>
+        </p>
+      </article>
+    </article>
+    <article>
+      <figure style="background-image:url(/preview/troca-grana.png)"></figure>
+      <h3> Troca Grana </h3>
+      <p>
+        Pequeno jogo infantil para crianças aprenderem e treinarem a somar
+        valores presentes em cédulas do real. Foi mencionado no <a href="https://www.cp2.g12.br/blog/labtijuca1/2019/11/21/sistema-monetario/"
+        rel="noopener noreferrer">blog do Colégio Pedro II</a>.
+      </p>
+      <article class="links">
+        <p>
+          <svg class="icon"><use href="#world"/></svg>
+          <a href="https://avellar.ml/trocagrana/">avellar.ml/trocagrana</a>
+        </p>
+      </article>
+    </article>
+    <article>
       <figure style="background-image:url(/preview/o-amendoim.png)"></figure>
       <h3> O Amendoim </h3>
       <p>
@@ -36,128 +65,6 @@
         <p>
           <svg class="icon"><use href="#world"/></svg>
           <a href="https://amendo.im/">amendo.im</a>
-        </p>
-      </article>
-    </article>
-    <article>
-      <figure style="background-image:url(/preview/bandwidth-humana.png)"></figure>
-      <h3> Bandwidth Humana </h3>
-      <p>
-        Quão eficiente seria uma conexão utilizando humanos como transmissores
-        de informação? Se um humano lendo e escrevendo substituísse, por exemplo,
-        o 4G, quão menos eficiente seria?
-      </p>
-      <article class="links">
-        <p>
-          <svg class="icon"><use href="#world"/></svg>
-          <a href="https://matheusavellar.github.io/bandwidth-humana/">matheusavellar.github.io/bandwidth-humana/</a>
-        </p>
-        <p>
-          <svg class="icon"><use href="#code"/></svg>
-          <a href="https://github.com/MatheusAvellar/bandwidth-humana">github.com/MatheusAvellar/bandwidth-humana</a>
-        </p>
-      </article>
-    </article>
-    <article>
-      <figure style="background-image:url(/preview/troca-grana.png)"></figure>
-      <h3> Troca Grana </h3>
-      <p>
-        Pequeno jogo infantil para crianças aprenderem e treinarem a somar
-        valores presentes em cédulas do real. Foi mencionado no <a href="https://www.cp2.g12.br/blog/labtijuca1/2019/11/21/sistema-monetario/"
-        rel="noopener noreferrer">blog do Colégio Pedro II</a>.
-      </p>
-      <article class="links">
-        <p>
-          <svg class="icon"><use href="#world"/></svg>
-          <a href="https://avellar.ml/trocagrana/">avellar.ml/trocagrana</a>
-        </p>
-      </article>
-    </article>
-    <article>
-      <figure style=""></figure>
-      <h3> File Extension Watch Dog (fewd) </h3>
-      <p>
-        Programa proof-of-concept que automaticamente converte arquivos quando
-        eles são renomeados (i.e. renomear `arquivo.jpg` para `arquivo.png`
-        realmente converte a imagem para PNG).
-      </p>
-      <article class="links">
-        <p>
-          <svg class="icon"><use href="#code"/></svg>
-          <a href="https://github.com/MatheusAvellar/fewd">github.com/MatheusAvellar/fewd</a>
-        </p>
-      </article>
-    </article>
-    <article>
-      <figure style="background-image:url(/preview/adobe-logo-generator.png)"></figure>
-      <h3> Adobe Logo Generator </h3>
-      <p>
-        Gerador de pseudo-logotipos que se parecem com logotipos de produtos da
-        Adobe (ex. Photoshop, Illustrator, etc).
-      </p>
-      <article class="links">
-        <p>
-          <svg class="icon"><use href="#world"/></svg>
-          <a href="https://matheusavellar.github.io/adobe-logos/">matheusavellar.github.io/adobe-logos</a>
-        </p>
-        <p>
-          <svg class="icon"><use href="#code"/></svg>
-          <a href="https://github.com/MatheusAvellar/adobe-logos">github.com/MatheusAvellar/adobe-logos</a>
-        </p>
-      </article>
-    </article>
-    <article>
-      <figure style="background-image:url(/preview/plates.png)"></figure>
-      <h3> Plates </h3>
-      <p>
-        Site que verifica se palavras podem ser escritas como placas de
-        trânsito.
-      </p>
-      <article class="links">
-        <p>
-          <svg class="icon"><use href="#world"/></svg>
-          <a href="https://matheusavellar.github.io/plates/">matheusavellar.github.io/plates</a>
-        </p>
-        <p>
-          <svg class="icon"><use href="#code"/></svg>
-          <a href="https://github.com/MatheusAvellar/plates">github.com/MatheusAvellar/plates</a>
-        </p>
-      </article>
-    </article>
-    <article>
-      <figure style="background-image:url(/preview/centavo.png)"></figure>
-      <h3> Centavo </h3>
-      <p>
-        Vale a pena se abaixar para pegar uma moeda de R$0,01?
-      </p>
-      <article class="links">
-        <p>
-          <svg class="icon"><use href="#world"/></svg>
-          <a href="https://matheusavellar.github.io/centavo/">matheusavellar.github.io/centavo</a>
-        </p>
-        <p>
-          <svg class="icon"><use href="#code"/></svg>
-          <a href="https://github.com/MatheusAvellar/centavo">github.com/MatheusAvellar/centavo</a>
-        </p>
-      </article>
-    </article>
-    <article>
-      <figure style="background-image:url(/preview/dun-machine.png)"></figure>
-      <h3> Dun Machine </h3>
-      <p>
-        Site inspirado em <a rel="noopener noreferrer"
-        href="https://twitter.com/i/status/1077978238314520577">um tweet</a>
-        sobre a quantidade de "dun"s em músicas.<br>…é mais legal do que soa,
-        eu juro.
-      </p>
-      <article class="links">
-        <p>
-          <svg class="icon"><use href="#world"/></svg>
-          <a href="https://matheusavellar.github.io/dun-machine/">matheusavellar.github.io/dun-machine</a>
-        </p>
-        <p>
-          <svg class="icon"><use href="#code"/></svg>
-          <a href="https://github.com/MatheusAvellar/dun-machine">github.com/MatheusAvellar/dun-machine</a>
         </p>
       </article>
     </article>
