@@ -35,7 +35,7 @@
       <article class="links">
         <p>
           <svg class="icon"><use href="#world"/></svg>
-          <a href="https://avellar.ml/trocagrana/">avellar.ml/trocagrana</a>
+          <a href="https://lab.avl.la/trocagrana/">lab.avl.la/trocagrana</a>
         </p>
       </article>
     </article>
