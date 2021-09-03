@@ -9,7 +9,7 @@
 
 <main>
   <section>
-    <T2> Papers </T2>
+    <T2> Artigos </T2>
     <article>
       <h3> 2019 – Iniciação Científica </h3>
       <p>

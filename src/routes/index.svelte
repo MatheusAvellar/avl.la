@@ -36,10 +36,18 @@
     </p>
   </section>
   <section>
-    <h2> FAQ </h2>
+    <h2> Trivia </h2>
     <article>
       <h3> Sabor favorito de pizza? </h3>
       <p>Margherita (tomate com manjericão) ou strogonoff.</p>
+    </article>
+    <article>
+      <h3> Contribuições para a sociedade? </h3>
+      <p>
+        Eu sou, <em>tecnicamente</em> falando, contribuidor da especificação do
+        CSS – vide <a href="https://github.com/w3c/csswg-drafts/pull/6562">pull
+        request</a> de agosto de 2021.
+      </p>
     </article>
   </section>
 </main>
