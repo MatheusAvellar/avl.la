@@ -29,8 +29,8 @@
       <h3> Troca Grana </h3>
       <p>
         Pequeno jogo infantil para crianças aprenderem e treinarem a somar
-        valores presentes em cédulas do real. Foi mencionado no <a href="https://www.cp2.g12.br/blog/labtijuca1/2019/11/21/sistema-monetario/"
-        rel="noopener noreferrer">blog do Colégio Pedro II</a>.
+        valores presentes em cédulas do real. Foi mencionado no
+        <a href="https://www.cp2.g12.br/blog/labtijuca1/2019/11/21/sistema-monetario/">blog do Colégio Pedro II</a>.
       </p>
       <article class="links">
         <p>
@@ -57,9 +57,8 @@
       <figure style="background-image:url(/preview/amendoim.png)"></figure>
       <h3> amendo.im </h3>
       <p>
-        Site inspirado no famoso <a href="http://pudim.com.br/"
-        rel="noopener noreferrer">pudim.com.br</a>, porém com temática de
-        amendoim.
+        Site inspirado no famoso <a href="http://pudim.com.br/">pudim.com.br</a>,
+        porém com temática de amendoim.
       </p>
       <article class="links">
         <p>
@@ -88,9 +87,6 @@ article + article {
 }
 h3 {
   font-size: 1.2rem;
-}
-strong {
-  font-weight: 500;
 }
 figure {
   background-size: cover;

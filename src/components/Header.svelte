@@ -1,11 +1,13 @@
 <script>
   import Nav from "./Nav.svelte";
+  import Hr from "./Hr.svelte";
   export let segment = "?";
 </script>
 
 <header>
   <h1><span>avellar</span>/{segment}</h1>
   <Nav {segment}/>
+  <Hr/>
 </header>
 
 <style>

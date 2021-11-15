@@ -1,5 +1,6 @@
 <script>
   import Nav from "./Nav.svelte";
+  import Hr from "./Hr.svelte";
   export let segment = "";
 </script>
 
@@ -8,8 +9,8 @@
   <p>
     <i>Connoisseur</i> de pizza, programador de inutilidades
   </p>
-  <hr>
   <Nav {segment}/>
+  <Hr/>
 </header>
 
 <style>
@@ -18,10 +19,6 @@ h1 {
 }
 p {
   font-size: 1.2rem;
-}
-hr {
-  border: 0;
-  border-top: 1px solid #f1f1f1;
 }
 @media screen and (max-width: 800px) {
   h1 {

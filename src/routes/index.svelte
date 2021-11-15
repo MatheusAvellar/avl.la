@@ -8,47 +8,29 @@
 </svelte:head>
 
 <main>
-  <section class="column">
-    <p> Olá! </p>
-    <p> Bem vindo a um dos meus cantinhos na internet! </p>
-    <p>
-      Se é o que você procura, veja aqui meu
-      <a href="/files/cv-matheusavellar-pt.pdf">currículo</a>.
-    </p>
-    <p>
-      Para dar uma olhada em alguns de meus projetos, visite
-      <a href="/projetos">/projetos</a>.
-    </p>
-    <p>
-      Para ver minhas realizações acadêmicas, <a href="/academic">/academic</a>.
-    </p>
-    <p>
-      Se você quer bisbilhotar o que eu uso, <a href="/uses">/uses</a>.
-    </p>
-    <p>
-      <br>
-      De qualquer forma, espero que goste!
-    </p>
-  </section>
   <section>
-    <p>
-      Esse site ainda está em construção. Algumas coisas talvez mudem sem aviso!
-    </p>
-  </section>
-  <section>
-    <h2> Trivia </h2>
-    <article>
-      <h3> Sabor favorito de pizza? </h3>
-      <p>Margherita (tomate com manjericão) ou strogonoff.</p>
+    <article class="profile">
+      <a href="/eu/photo-500x500.jpg">
+        <picture>
+          <source media="(max-width: 600px)" srcset="/eu/photo-100x100.jpg">
+          <img src="/eu/photo-200x200.jpg" alt="Fotografia de mim em um campo florido.">
+        </picture>
+      </a>
     </article>
     <article>
-      <h3> Contribuições para a sociedade? </h3>
+      <p> Olá! </p>
+      <p> Eu sou o Matheus Avellar, e esse é um dos meus cantinhos na internet! </p>
       <p>
-        Eu sou, <em>tecnicamente</em> falando, contribuidor da especificação do
-        CSS – vide <a href="https://github.com/w3c/csswg-drafts/pull/6562">pull
-        request</a> de agosto de 2021.
+        Se é o que você procura, veja aqui meu
+        <a href="/files/cv-matheusavellar-pt.pdf">currículo</a>.
       </p>
     </article>
+  </section>
+  <section>
+    <p>
+      Esse site está eternamente em construção. Algumas coisas talvez mudem sem
+      aviso!
+    </p>
   </section>
 </main>
 <Footer/>
@@ -57,26 +39,12 @@
 section {
   margin-bottom: 2rem;
 }
-h2 {
-  margin-bottom: 1rem;
+.profile {
+  float: right;
+  margin: 0 0 1rem 1rem;
 }
-h3 {
-  font-size: 1rem;
-  font-weight: 500;
-  margin: 1rem 0 .25rem;
-  color: #696969;
-}
-.column {
-  columns: 2;
-  column-rule: 1px solid var(--black);
-  column-gap: 3rem;
-}
-@media screen and (max-width: 800px) {
-  .column {
-    columns: unset;
-  }
-  .column p+p {
-    margin-top: .5rem;
-  }
+.profile img {
+  box-shadow: 5px 5px 5px #e1d4ff;
+  border-radius: 9px;
 }
 </style>
