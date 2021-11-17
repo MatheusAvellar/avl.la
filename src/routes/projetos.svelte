@@ -8,12 +8,12 @@
 </svelte:head>
 
 <main>
+  <T2> Projetos </T2>
   <section>
-    <T2> Projetos </T2>
     <article>
-      <figure style="background-image:url(/preview/lab.png);background-position-y:-70px"></figure>
+      <figure style="background-image:url(/preview/lab.png)"></figure>
       <h3> avellab </h3>
-      <p>
+      <p class="description">
         Projetos experimentais que eu faço no meu tempo livre. Pode ser
         considerado um portfólio!
       </p>
@@ -27,7 +27,7 @@
     <article>
       <figure style="background-image:url(/preview/troca-grana.png)"></figure>
       <h3> Troca Grana </h3>
-      <p>
+      <p class="description">
         Pequeno jogo infantil para crianças aprenderem e treinarem a somar
         valores presentes em cédulas do real. Foi mencionado no
         <a href="https://www.cp2.g12.br/blog/labtijuca1/2019/11/21/sistema-monetario/">blog do Colégio Pedro II</a>.
@@ -42,7 +42,7 @@
     <article>
       <figure style="background-image:url(/preview/o-amendoim.png)"></figure>
       <h3> O Amendoim </h3>
-      <p>
+      <p class="description">
         Blogzinho em que eu faço pesquisas e escrevo sobre coisas que eu
         descubro.
       </p>
@@ -56,7 +56,7 @@
     <article>
       <figure style="background-image:url(/preview/amendoim.png)"></figure>
       <h3> amendo.im </h3>
-      <p>
+      <p class="description">
         Site inspirado no famoso <a href="http://pudim.com.br/">pudim.com.br</a>,
         porém com temática de amendoim.
       </p>
@@ -78,12 +78,23 @@
 <Footer/>
 
 <style>
-article {
-  padding-left: 1rem;
-  margin: 2.5rem 0;
-}
-article + article {
+section {
+  display: grid;
   margin-top: 1rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+section > article {
+  position: relative;
+  padding: 1rem;
+  border: 2px solid #efefef;
+  border: 2px solid var(--soft-highlight, #efefef);
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  background-color: var(--softest-highlight, #f9f9f9);
+  overflow: hidden;
+
+  box-shadow: var(--shadow-elevation-medium);
 }
 h3 {
   font-size: 1.2rem;
@@ -91,18 +102,23 @@ h3 {
 figure {
   background-size: cover;
   height: 7.5rem;
-  width: 20rem;
-  border: 2px solid #ddd;
-  border-radius: 4px;
-  margin: 0 0 0.5rem -2px;
+  width: 110%;
+  width: calc(100% + 2rem);
+  margin: -1rem 0 0.5rem -1rem;
+  border-bottom: 2px solid #efefef;
+  border-bottom: 2px solid var(--soft-highlight, #efefef);
   padding: 0;
   background-position: center;
   background-repeat: no-repeat;
-
-  background-color: #f2f2f2;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23dfdfdf' fill-opacity='1'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
+.description {
+  margin-bottom: 2rem;
+}
 .links {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
   margin-top: 1rem;
   padding: 0;
 }
@@ -110,11 +126,16 @@ figure {
   vertical-align: middle;
 }
 .icon {
-  fill: #444;
-  fill: var(--black);
+  fill: #acacac;
+  fill: var(--hard-highlight, #acacac);
   height: 24px;
   width: 24px;
   vertical-align: middle;
   box-sizing: border-box;
+}
+@media screen and (max-width: 560px) {
+  section {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

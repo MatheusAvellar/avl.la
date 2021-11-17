@@ -44,7 +44,7 @@ section {
   margin: 0 0 1rem 1rem;
 }
 .profile img {
-  box-shadow: 5px 5px 5px #e1d4ff;
-  border-radius: 9px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-elevation-medium);
 }
 </style>

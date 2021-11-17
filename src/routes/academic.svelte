@@ -1,5 +1,6 @@
 <script>
   import T2 from "../components/T2.svelte";
+  import Hr from "../components/Hr.svelte";
   import Footer from "../components/Footer.svelte";
 </script>
 
@@ -36,8 +37,21 @@
       </p>
     </article>
   </section>
+  <Hr/>
   <section>
     <T2> Extras </T2>
+    <article>
+      <h3> Monitoria de Computação </h3>
+      <p>
+        Fui monitor da disciplina de Computação I no curso de Ciência da
+        Computação na UFRJ do primeiro semestre de 2020 ao segundo semestre de
+        2021 (presente).
+      </p>
+      <p>
+        <a href="/files/matheusavellar-declaracao-monitoria-2020.pdf">Declaração</a> (2020)<br>
+        <a href="/files/matheusavellar-declaracao-monitoria-2021.1.pdf">Declaração</a> (2021.1)
+      </p>
+    </article>
     <article>
       <h3> GRIS </h3>
       <p>
@@ -49,6 +63,7 @@
       </p>
     </article>
   </section>
+  <Hr/>
   <section>
     <T2> Links </T2>
     <article>
@@ -72,7 +87,7 @@
            href="https://orcid.org/0000-0003-2810-8710"
            target="orcid.widget"
            style="background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAALVBMVEVHcEymzjmmzjmmzjmmzjmmzjmmzjn///+SwCnT55y82mus0UXe7bXj8MH0+ebg+QDqAAAABnRSTlMAIL9gz+/edokRAAAAYklEQVQI12NgYDBKS1NmAAKRNCBwZGBgDKtsS0tLFWBgSQMx0hwYzNI62tK2pSUzqKVVtpfXbktiSAMy2tYdS4MwssqgjLQyJBE1iJokoHawrmSggWDgALQCRAOtgFsKcwYACXguQwgn0jwAAAAASUVORK5CYII=)">
-            orcid.org/0000-0003-2810-8710
+          orcid.org/0000-0003-2810-8710
         </a>
       </p>
     </article>
@@ -108,13 +123,15 @@ a[href$=".pdf"] {
 
 fieldset {
   margin-top: 1em;
-  border: 1px solid #d0d0d0;
+  border: 1px solid #acacac;
+  border: 1px solid var(--hard-highlight, #acacac);
   border-radius: 3px;
 }
 legend {
   text-transform: uppercase;
   font-size: 0.8rem;
-  color: #c0c0c0;
+  color: #acacac;
+  color: var(--hard-highlight, #acacac);
   user-select: none;
   padding: 0 .5rem;
 }

@@ -15,6 +15,8 @@ h1 {
   font-size: 3.5rem;
   text-overflow: ellipsis;
   overflow: hidden;
+  line-height: normal;
+  margin-top: -.175em;
 }
 span {
   color: #99999e;
