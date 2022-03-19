@@ -10,19 +10,51 @@
 
 <main>
   <section>
-    <T2> Artigos </T2>
+    <T2> Trabalhos </T2>
     <article>
-      <h3> 2019 – Iniciação Científica </h3>
+      <h3 id="2022tcc"> 2022 – Trabalho de Conclusão de Curso </h3>
+      <p class="description">
+        Desenvolvimento de prova de conceito de uma plataforma de análise de
+        qualidade de dados para conjuntos de dados arbitrários. Ferramenta
+        feita com uso de
+        <a href="https://svelte.dev/">Svelte</a>,
+        <a href="https://nodejs.org/">NodeJS</a> e
+        <a href="https://sqlite.org/">SQLite</a>.
+        Trabalho defendido e aprovado em 11/mar/2022.
+      </p>
       <p>
+        <a href="/files/matheusavellar-tcc-monografia.pdf">Monografia</a> (1.19&nbsp;MB)
+      </p>
+      <p>
+        <a href="/files/matheusavellar-tcc-slides.pdf">Apresentação</a> (4.15&nbsp;MB)
+      </p>
+      <fieldset>
+        <legend>Citação</legend>
+        <cite>
+          BARROS, Matheus Avellar. <b>Desenvolvimento de uma plataforma de qualidade
+          de dados agnóstica a dados</b>. Orientador: Geraldo Zimbrão da Silva.
+          2022. 46 f. Trabalho de Conclusão de Curso (Bacharelado em Ciência da
+          Computação) – Universidade Federal do Rio de Janeiro, Rio de Janeiro,
+          2022.
+
+        </cite>
+      </fieldset>
+    </article>
+    <article>
+      <h3 id="2019ic"> 2019 – Iniciação Científica </h3>
+      <p class="description">
         Projeto de desenvolvimento de um quiz, em <a href="https://svelte.dev/">Svelte</a>,
         com o tema de Economia Circular. Apresentado na Jornada de Iniciação
         Científica (JIC) 2019.
       </p>
       <p>
-        <a href="/files/matheusavellar-paper-jic.pdf">Paper</a>
+        <a href="/files/matheusavellar-paper-jic.pdf">Paper</a> (586&nbsp;KB)
       </p>
       <p>
-        <a href="/files/matheusavellar-certificado-jic.pdf">Certificado</a>*
+        <a href="/files/matheusavellar-certificado-jic.pdf">Certificado</a>* (889&nbsp;KB)
+      </p>
+      <p>
+        <small>* Com nome digitado incorretamente, infelizmente</small>
       </p>
       <fieldset>
         <legend>Citação</legend>
@@ -32,9 +64,6 @@
           Janeiro: CETEM/MCTIC, 2019. Disponível em: <a href="http://mineralis.cetem.gov.br/handle/cetem/2271">http://mineralis.cetem.gov.br/handle/cetem/2271</a>
         </cite>
       </fieldset>
-      <p>
-        <small>* Com nome digitado incorretamente, infelizmente</small>
-      </p>
     </article>
   </section>
   <Hr/>
@@ -42,10 +71,10 @@
     <T2> Extras </T2>
     <article>
       <h3> Monitoria de Computação </h3>
-      <p>
-        Fui monitor da disciplina de Computação I no curso de Ciência da
-        Computação na UFRJ do primeiro semestre de 2020 ao segundo semestre de
-        2021 (presente).
+      <p class="description">
+        Fui oficialmente monitor da disciplina de Computação I no curso de
+        Ciência da Computação na UFRJ do primeiro semestre de 2020 ao segundo
+        semestre de 2021, e extraoficialmente no primeiro semestre de 2022.
       </p>
       <p>
         <a href="/files/matheusavellar-declaracao-monitoria-2020.pdf">Declaração</a> (2020)<br>
@@ -54,9 +83,9 @@
     </article>
     <article>
       <h3> GRIS </h3>
-      <p>
-        Integrante do Grupo de Respostas à Incidentes de Segurança (GRIS) de
-        janeiro/2018 a janeiro/2019.
+      <p class="description">
+        Integrante do Grupo de Respostas à<sup>[sic]</sup> Incidentes de Segurança
+        (GRIS) de janeiro/2018 a janeiro/2019.
       </p>
       <p>
         <a href="/files/matheusavellar-certificado-gris.pdf">Certificado</a>
@@ -102,6 +131,9 @@
   background-position: 0 center;
   padding-left: 25px;
 }
+.description {
+  margin-bottom: .5em;
+}
 article {
   padding-left: 1rem;
   margin: 1rem 0;
@@ -137,5 +169,11 @@ legend {
 }
 cite {
   font-style: normal;
+}
+cite > b {
+  font-weight: 500;
+}
+sup {
+  color: #acacac;
 }
 </style>
