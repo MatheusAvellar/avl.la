@@ -14,6 +14,10 @@
     <article>
       <h3 id="2022tcc"> 2022 – Trabalho de Conclusão de Curso </h3>
       <p class="description">
+        Trabalho de conclusão do curso de bacharelado em Ciência da Computação
+        na Universidade Federal do Rio de Janeiro (UFRJ).
+      </p>
+      <p class="description">
         Desenvolvimento de prova de conceito de uma plataforma de análise de
         qualidade de dados para conjuntos de dados arbitrários. Ferramenta
         feita com uso de
@@ -35,8 +39,8 @@
           de dados agnóstica a dados</b>. Orientador: Geraldo Zimbrão da Silva.
           2022. 46 f. Trabalho de Conclusão de Curso (Bacharelado em Ciência da
           Computação) – Universidade Federal do Rio de Janeiro, Rio de Janeiro,
-          2022.
-
+          2022. Disponível em:
+          <a href="http://hdl.handle.net/11422/16640">http://hdl.handle.net/11422/16640</a>.
         </cite>
       </fieldset>
     </article>
@@ -61,7 +65,8 @@
         <cite>
           BARROS, M. A.; XAVIER, L. H. S. M. Development of a quiz on circular
           economy. In: Anais da Jornada de Iniciação Científica, 27. Rio de
-          Janeiro: CETEM/MCTIC, 2019. Disponível em: <a href="http://mineralis.cetem.gov.br/handle/cetem/2271">http://mineralis.cetem.gov.br/handle/cetem/2271</a>
+          Janeiro: CETEM/MCTIC, 2019. Disponível em:
+          <a href="http://mineralis.cetem.gov.br/handle/cetem/2271">http://mineralis.cetem.gov.br/handle/cetem/2271</a>.
         </cite>
       </fieldset>
     </article>
@@ -73,8 +78,8 @@
       <h3> Monitoria de Computação </h3>
       <p class="description">
         Fui oficialmente monitor da disciplina de Computação I no curso de
-        Ciência da Computação na UFRJ do primeiro semestre de 2020 ao segundo
-        semestre de 2021, e extraoficialmente no primeiro semestre de 2022.
+        Ciência da Computação na UFRJ nos períodos letivos de 2020.1, 2020.2 e
+        2021.1, e de forma extraoficial no período de 2021.2.
       </p>
       <p>
         <a href="/files/matheusavellar-declaracao-monitoria-2020.pdf">Declaração</a> (2020)<br>
