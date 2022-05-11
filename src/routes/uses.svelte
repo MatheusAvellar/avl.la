@@ -97,6 +97,13 @@
         Código CSS, adaptado por mim, para permitir a visualização de alt text no Twitter Web
       </p>
     </article>
+    <article>
+      <h3> Outros </h3>
+      <p>
+        <a href="http://www.michieldb.nl/other/cursors/">Posy's Cursor Black</a>
+        – um redesign do cursor padrão do Windows 10
+      </p>
+    </article>
   <section>
   </section>
 </main>

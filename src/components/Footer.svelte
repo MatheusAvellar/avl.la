@@ -2,6 +2,12 @@
 import GoogleFonts from "./GoogleFonts.svelte";
 import SoftStrong from "./SoftStrong.svelte";
 import Hr from "./Hr.svelte";
+
+// Substituído automaticamente pelo Rollup, supostamente
+let lastModif = "process.lastModified";
+if(lastModif.indexOf("/") === -1) {
+  lastModif = null;
+}
 </script>
 
 <footer>
@@ -50,6 +56,12 @@ import Hr from "./Hr.svelte";
         </svg>
         m<svg aria-label="@" class="icon stroke" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28"/></svg>avl.la
       </p>
+      {#if lastModif}
+        <p class="last-modif">
+          <SoftStrong>Atualizado por último em:</SoftStrong><br>
+          {lastModif}
+        </p>
+      {/if}
     </section>
   </section>
 </footer>
@@ -85,6 +97,10 @@ ul {
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+.last-modif {
+  margin-top: 1rem;
+  font-size: .75rem;
 }
 @media screen and (max-width: 500px) {
   .wrapper {

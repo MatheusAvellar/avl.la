@@ -13,6 +13,17 @@ const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
 const onwarn = (warning, onwarn) => (warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) || onwarn(warning);
 
+const months = [
+	"jan", "fev", "mar",
+	"abr", "mai", "jun",
+	"jul", "ago", "set",
+	"out", "nov", "dez"
+];
+function today() {
+	const d = new Date();
+	return `${d.getDate()}/${months[d.getMonth()]}/${d.getFullYear()}`;
+}
+
 export default {
 	client: {
 		input: config.client.input(),
@@ -20,7 +31,8 @@ export default {
 		plugins: [
 			replace({
 				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				'process.env.NODE_ENV': JSON.stringify(mode),
+				'process.lastModified': today()
 			}),
 			svelte({
 				dev,
@@ -65,7 +77,8 @@ export default {
 		plugins: [
 			replace({
 				'process.browser': false,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				'process.env.NODE_ENV': JSON.stringify(mode),
+				'process.lastModified': today()
 			}),
 			svelte({
 				generate: 'ssr',
@@ -91,7 +104,8 @@ export default {
 			resolve(),
 			replace({
 				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				'process.env.NODE_ENV': JSON.stringify(mode),
+				'process.lastModified': today()
 			}),
 			commonjs(),
 			!dev && terser()
