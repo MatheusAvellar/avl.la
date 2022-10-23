@@ -3,5 +3,6 @@
 <style>
 h2 {
   font-size: 2rem;
+  margin-top: 1em;
 }
 </style>

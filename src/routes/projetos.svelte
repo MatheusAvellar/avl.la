@@ -8,14 +8,23 @@
 </svelte:head>
 
 <main>
-  <T2> Projetos </T2>
   <section>
+    <div>
+      <p>
+        Você pode encontrar uma lista completa de meus projetos no Avellab.
+        São projetos diversos – alguns com usos práticos, mas muitos não –
+        que eu desenvolvi através dos anos.
+      </p>
+      <p>
+        Ela, claro, não é uma lista exaustiva, mas contém os projetos mais
+        recentes e alguns dos quais eu me orgulho mais.
+      </p>
+    </div>
     <article>
       <figure style="background-image:url(/preview/lab.png)"></figure>
       <h3> avellab </h3>
       <p class="description">
-        Projetos experimentais que eu faço no meu tempo livre. Pode ser
-        considerado um portfólio!
+        Meus projetos experimentais. Pode ser considerado um portfólio!
       </p>
       <article class="links">
         <p>
@@ -24,6 +33,9 @@
         </p>
       </article>
     </article>
+  </section>
+  <T2> Outros </T2>
+  <section>
     <article>
       <figure style="background-image:url(/preview/troca-grana.png)"></figure>
       <h3> Troca Grana </h3>
@@ -84,6 +96,9 @@ section {
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
+section > div {
+  text-indent: 1em;
+}
 section > article {
   position: relative;
   padding: 1rem;
@@ -94,6 +109,13 @@ section > article {
   background-color: var(--softest-highlight, #f9f9f9);
   overflow: hidden;
 
+  transition: box-shadow .125s ease;
+  box-shadow: var(--shadow-elevation-low);
+}
+section > article:hover,
+section > article:focus,
+section > article:focus-within,
+section > article:active {
   box-shadow: var(--shadow-elevation-medium);
 }
 h3 {
@@ -118,7 +140,7 @@ figure {
 .links {
   position: absolute;
   bottom: 1rem;
-  right: 1rem;
+  left: 1rem;
   margin-top: 1rem;
   padding: 0;
 }
