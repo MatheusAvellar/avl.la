@@ -53,8 +53,8 @@
     <T2> Hardware </T2>
     <article>
       <h3> Celular </h3>
-      <p> <a href="https://www.mi.com/global/mi-a1">Xiaomi Mi A1</a>
-        – bom custo-benefício, Android One, tudo de bom
+      <p> <a href="https://store.google.com/us/product/pixel_6">Google Pixel 6</a>
+        – o preço abaixou bastante quando lançou o 7, então valeu a pena
       </p>
     </article>
     <article>
