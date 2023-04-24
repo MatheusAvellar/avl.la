@@ -12,7 +12,7 @@
     <T2> Programação </T2>
     <article>
       <h3> Editor de Texto </h3>
-      <p> <a href="https://www.sublimetext.com/3">Sublime Text 3</a>
+      <p> <a href="https://www.sublimetext.com/">Sublime Text</a>
         – melhor que o VS Code
       </p>
       <p> Tema <a href="https://github.com/Briles/gruvbox">Gruvbox Dark</a>
@@ -64,24 +64,65 @@
         valeu o preço
       </p>
     </article>
-  </section>
-    <T2> Misc. </T2>
     <article>
-      <h3> Software </h3>
-      <p> <a href="https://github.com/microsoft/PowerToys">Microsoft PowerToys</a> –
-        só o Power Rename e o Image Resizer já fazem valer a instalação
-      </p>
-      <p> <a href="https://github.com/samhocevar/wincompose">WinCompose</a> –
-        incrivelmente útil para escrever símbolos rapidamente (letras gregas,
-        —, →, ×, etc)
-      </p>
-      <p> <a href="https://getsharex.com/">ShareX</a> –
-        melhor programa para tirar prints da tela que existe
-      </p>
-      <p> <a href="https://freefilesync.org/">FreeFileSync</a> –
-        programa ótimo para facilitar backups
+      <h3> Monitor </h3>
+      <p> <a href="https://www.philips.com.br/c-p/276E8VJSB_57/monitor-lcd-ultra-hd-4k/visao-geral">Philips 276E</a>
+        – não tenho reclamações; mas tenha em mente que ele não possui HDR ou alto falantes embutidos
       </p>
     </article>
+  </section>
+  <section>
+    <T2> Software utilities </T2>
+    <article>
+      <ul>
+        <li>
+          <p> <a href="https://safing.io/">Portmaster</a>
+            – uma interface melhor e mais flexível para o firewall
+          </p>
+        </li>
+        <li>
+          <p> <a href="https://github.com/microsoft/PowerToys">Microsoft PowerToys</a>
+            – só o Power Rename e o Image Resizer já fazem valer a instalação
+          </p>
+        </li>
+        <li>
+          <p> <a href="https://github.com/samhocevar/wincompose">WinCompose</a>
+            – incrivelmente útil para escrever símbolos rapidamente (letras gregas,
+            —, →, ×, etc)
+          </p>
+        </li>
+        <li>
+          <p> <a href="https://getsharex.com/">ShareX</a> –
+            melhor programa para tirar prints da tela que eu conheço
+          </p>
+        </li>
+        <li>
+          <p> <a href="https://vb-audio.com/Voicemeeter/banana.htm">Voicemeeter Banana</a>
+            – apesar de ter uma interface extremamente confusa, é um programa bastante útil para controlar
+            input/output de áudio
+          </p>
+        </li>
+        <li>
+          <p> <a href="https://freefilesync.org/">FreeFileSync</a>
+            – programa ótimo para facilitar backups
+          </p>
+        </li>
+        <li>
+          <p> <a href="https://github.com/valinet/ExplorerPatcher">ExplorerPatcher</a>
+            – recupera o Start Menu do Windows 10 no Windows 11
+          </p>
+        </li>
+        <li>
+          <p> <a href="https://winscp.net/eng/index.php">WinSCP</a>
+            + <a href="https://play.google.com/store/apps/details?id=pl.solidexplorer2">Solid Explorer</a>
+            – transferência de arquivos do celular para o computador (ou vice-versa)
+            via FTP; muito mais eficaz que USB
+          </p>
+        </li>
+      </ul>
+    </article>
+  </section>
+    <T2> Misc. </T2>
     <article>
       <h3> Extensões para o Navegador </h3>
       <p> <a href="https://chrome.google.com/webstore/detail/aomidfkchockcldhbkggjokdkkebmdll">Redirect Path</a> –
@@ -119,5 +160,11 @@ article + article {
 }
 h3 {
   font-size: 1.2rem;
+}
+ul {
+  list-style-type: disc;
+}
+ul > li+li {
+  margin-top: .5rem;
 }
 </style>
