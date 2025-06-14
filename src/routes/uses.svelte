@@ -13,7 +13,7 @@
 		<article>
 			<h3> Editor de Texto </h3>
 			<p> <a href="https://www.sublimetext.com/">Sublime Text</a>
-				– melhor que o VS Code
+				– pros meus projetinhos pessoais
 			</p>
 			<p> Tema <a href="https://github.com/Briles/gruvbox">Gruvbox Dark</a>
 				– é um mimo
@@ -22,7 +22,7 @@
 				antes disso, <a href="https://github.com/tonsky/FiraCode">Fira Code</a> e, antes ainda,
 				<a href="http://terminus-font.sourceforge.net/">Terminus</a>
 				<br>
-				<span style="color:#bbb;font-size:.65em">2 <em>ESPAÇOS</em>, não tabs!</span>
+				<span style="color:#bbb;font-size:.65em">Tabs (não espaços!) de tamanho 2!!</span>
 			</p>
 		</article>
 	</section>
@@ -43,9 +43,9 @@
 			<p> <a href="https://bitwarden.com/">Bitwarden</a>
 				– password manager open-source e 100% de graça :)
 			</p>
-			<p> <a href="https://authy.com/">Authy</a>
-				– 2FA com suporte a múltiplos dispositivos, feature que me fez migrar do
-				Google Authenticator para ele
+			<p> <a href="https://ente.io/auth/">Ente Auth</a>
+				– 2FA com suporte para múltiplos dispositivos! Originalmente migrei do Google Authenticator pro Authy pelo suporte pra PC, aí
+				removeram isso e tive que achar outro; tô gostando do Ente
 			</p>
 		</article>
 	</section>
@@ -67,7 +67,10 @@
 		<article>
 			<h3> Monitor </h3>
 			<p> <a href="https://www.philips.com.br/c-p/276E8VJSB_57/monitor-lcd-ultra-hd-4k/visao-geral">Philips 276E</a>
-				– não tenho reclamações; mas tenha em mente que ele não possui HDR ou alto falantes embutidos
+				– comprei mil anos atrás por ~R$1,000. Não tenho reclamações, mas tenha em mente que ele não possui HDR ou alto falantes embutidos
+			</p>
+			<p> <a href="https://www.lg.com/br/monitores/monitores-uhd-4k/27us500-w/">LG 27US500-W</a>
+				– literalmente idêntico ao Philips, chutaria que o exato mesmo painel. Comprei numa promoção na <a href="https://www.kabum.com.br/produto/728072/">KaBuM!</a> em 2025 por ~R$1,300
 			</p>
 		</article>
 	</section>
@@ -131,11 +134,8 @@
 			<p> <a href="https://chrome.google.com/webstore/detail/jghecgabfgfdldnmbfkhmffcabddioke">Volume Master</a> –
 				permite o aumento do volume de uma aba para até 600%
 			</p>
-			<p> <a href="https://chrome.google.com/webstore/detail/amoldiondpmjdnllknhklocndiibkcoe">Twemex</a> –
-				aumenta a funcionalidade da barra lateral do Twitter Web
-			</p>
 			<p> <a href="https://gist.github.com/MatheusAvellar/4655d5b21c5cdc91e6edfff0aed13003">twitter-alt.css</a> –
-				Código CSS, adaptado por mim, para permitir a visualização de alt text no Twitter Web
+				código CSS, adaptado por mim, para permitir a visualização de alt text no Twitter Web
 			</p>
 		</article>
 		<article>

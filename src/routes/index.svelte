@@ -31,8 +31,9 @@
 	<T2>Quem sou eu</T2>
 	<section>
 		<ul>
-			<li>Cientista da computação e programador (com foco em web);</li>
-			<li>Mestrando na <a href="https://www.cos.ufrj.br/">PESC</a>/COPPE, na UFRJ;</li>
+			<li>Cientista da computação e programador, com foco em web;</li>
+			<li>Atualmente engenheiro de dados (mas também front e back end) na Diretoria de Inovação e Tecnologia (DIT) da Secretaria Municipal de Saúde do Rio de Janeiro (SMS);</li>
+			<li>(quase) Mestre pelo <a href="https://www.cos.ufrj.br/">PESC</a>/COPPE, na UFRJ;</li>
 			<li>Arqueólogo digital amador;</li>
 			<li>Colecionador de inutilidades;</li>
 			<li>Defensor de moedas de 1 centavo;</li>
