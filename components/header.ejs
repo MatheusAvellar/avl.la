@@ -1,0 +1,33 @@
+<header id="_scope-header">
+	<%_ if(path == "") { %>
+		<h1 class="big"> Matheus Avellar </h1>
+	<%_ } else { %>
+		<h1 class="small"><span>avellar</span>/<%= path %></h1>
+	<%_ } %>
+	<%- include("nav.ejs", { path: path }) %>
+	<hr>
+</header>
+<style>
+#_scope-header {
+	h1.big {
+		font-size: 3.5rem;
+		line-height: normal;
+		margin-top: -.175em;
+	}
+	h1.small {
+		font-size: 3.5rem;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		line-height: normal;
+		margin-top: -.175em;
+	}
+	span {
+		color: #99999e;
+	}
+	@media screen and (max-width: 800px) {
+		h1 {
+			font-size: 2.5rem;
+		}
+	}
+}
+</style>

@@ -1,0 +1,343 @@
+<main id="_scope-main">
+	<section class="right">
+		<section id="rss">
+			<div id="rss-header">
+				<div>
+					<img id="rss-symbol" alt="Símbolo de RSS" width="16" height="16" src="./assets/rss.svg">
+					<strong class="soft">Meus rastros online</strong>
+				</div>
+				<div>
+					<span>
+						Atualizado 2x por dia!<br>
+						Última atualização:
+					</span>
+					<time id="rss-last-updated"></time>
+				</div>
+			</div>
+			<ol id="rss-events">
+				<template id="template">
+					<li>
+						<img class="item-icon" draggable="false">
+						<a class="item-url">
+							<div class="item-title"></div>
+							<div class="item-description"></div>
+							<div><time class="item-datetime"></time></div>
+						</a>
+					</li>
+				</template>
+			</ol>
+			<script src="/assets/localstorage-slim.v2.7.0.min.js"></script>
+			<script>
+const months = [
+	"jan", "fev", "mar",
+	"abr", "mai", "jun",
+	"jul", "ago", "set",
+	"out", "nov", "dez"
+];
+function format_dt(datestr) {
+	const dt = new Date(datestr)
+	const h = String(dt.getHours()).padStart(2, "0");
+	const m = String(dt.getMinutes()).padStart(2, "0");
+
+	return `${h}:${m} · ${dt.getDate()}/${months[dt.getMonth()]}/${dt.getFullYear()}`;
+}
+// localstorage-slim.js
+const local_json = ls.get("/eu/rss.json");
+if(!local_json) {
+	console.log("No local JSON; fetching from API");
+	fetch("https://api.avl.la/eu/rss.json").then(r => {
+		r.json().then(json => {
+			//                              TTL: 2 hours
+			ls.set("/eu/rss.json", json, { ttl: (2 * 60 * 60) });
+			consume_json(json);
+		});
+	});
+} else {
+	console.log("Local JSON found");
+	consume_json(local_json);
+}
+
+function capitalize(str) {
+	return String(str).replace(/^\p{Ll}/u, c => c.toUpperCase());
+}
+
+function get_wiki_scope(str) {
+	if(/^User( talk)?:/.test(str))
+		return "user page";
+
+	if(/^Category( talk)?:/.test(str))
+		return "category page";
+
+	if(/^Draft( talk)?:/.test(str))
+		return "category page";
+
+	if(/^Template( talk)?:/.test(str))
+		return "template";
+
+	return "article";
+}
+
+function consume_json(json) {
+	const data = json["data"];
+	const data_last_update = format_dt(json["updated_at"]);
+	console.log(data_last_update, data);
+	document.getElementById("rss-last-updated").textContent = data_last_update;
+	data.forEach(append_rss_element);
+	// TODO: fallback when no events
+}
+
+function append_rss_element(obj) {
+	const list = document.getElementById("rss-events");
+	const template = document.getElementById("template");
+	const clone = template.content.cloneNode(true);
+
+	const a = clone.querySelector("a.item-url");
+	a.href = obj.url;
+
+	const icon = clone.querySelector("img.item-icon");
+	const description = clone.querySelector(".item-description");
+
+	switch(obj.type) {
+		case "wiki":
+			switch(obj.details.kind) {
+				case "en":
+				case "pt": {
+					icon.src = "/assets/wikipedia.svg";
+					icon.title = "Wikipedia";
+
+					const action_p = document.createElement("p");
+					action_p.textContent = `Edited ${get_wiki_scope(obj.title)}`;
+					description.appendChild(action_p);
+					break;
+				}
+				case "commons": {
+					icon.src = "/assets/commons.svg";
+					icon.title = "Wikimedia Commons";
+
+					const action_p = document.createElement("p");
+					if(obj.title.startsWith("File:")) {
+						if(obj.details.description.startsWith("Uploaded a work")) {
+							action_p.textContent = "Uploaded file";
+						} else {
+							action_p.textContent = "Edited file page";
+						}
+					} else {
+						action_p.textContent = `Edited ${get_wiki_scope(obj.title)}`;
+					}
+					description.appendChild(action_p);
+					break;
+				}
+			}
+			break;
+		case "letterboxd": {
+			icon.src = "/assets/letterboxd.svg";
+			icon.title = "Letterboxd";
+
+			if(obj.details.is_rewatch) {
+				const rewatch_p = document.createElement("p");
+				rewatch_p.textContent = "(rewatch)";
+				description.appendChild(rewatch_p);
+			}
+
+			const rating = Number(obj.details.rating) || 0;
+			const has_half = Math.floor(rating) != rating;
+			const rating_p = document.createElement("p");
+			rating_p.appendChild(document.createTextNode("Rated: "));
+
+			const rating_span = document.createElement("span");
+			rating_span.className = "letterboxd-rating";
+			rating_span.textContent =
+				"★".repeat(Math.floor(rating)) + (has_half ? "½" : "");
+			rating_p.appendChild(rating_span);
+
+			description.appendChild(rating_p);
+			break;
+		}
+		case "github": {
+				icon.src = "/assets/github.svg";
+				icon.title = "GitHub";
+
+				if(obj.title == "Pushed to branch")
+					return;
+				if(obj.title == "Created branch" && obj.details.branch == "main")
+					return;
+
+				const branch = obj.details.branch;
+				const repo = obj.details.repository.replaceAll("/", "/\u200C");  // ZWNJ
+				const action_p = document.createElement("p");
+				let text = "";
+				if(branch) {
+					text = `branch '${branch}' on `;
+				}
+				text += `repo '${repo}'`;
+				action_p.textContent = capitalize(text);
+				description.appendChild(action_p);
+				break;
+			}
+		case "mal": {
+			icon.src = "/assets/mal.svg";
+			icon.title = "MyAnimeList";
+
+			const ep_watched = obj.details.episodes_watched;
+			const ep_total = obj.details.episodes_total;
+			const watch_pct = Math.floor((ep_watched / ep_total) * 100_00) / 1_00;
+
+			const watch_p = document.createElement("p");
+			watch_p.className = "mal-watched";
+			watch_p.textContent = `Watched ${ep_watched}/${ep_total} (${watch_pct}%)`;
+			description.appendChild(watch_p);
+			break;
+		}
+		default: break;
+	}
+
+	const item_title = clone.querySelector(".item-title");
+	item_title.textContent = obj.title;
+
+	const time = clone.querySelector(".item-datetime");
+	time.setAttribute("datetime", obj.datetime);
+	time.textContent = format_dt(obj.datetime);
+
+	list.appendChild(clone);
+}
+			</script>
+		</section>
+	</section>
+	<section class="left">
+		<section class="profile">
+			<a href="./assets/eu/eu-500x500.jpg">
+				<picture>
+					<source media="(max-width: 400px)" srcset="./assets/eu/eu-100x100.jpg">
+					<img src="./assets/eu/eu-200x200.jpg" alt="Fotografia de mim, de boné, segurando uma aranha.">
+				</picture>
+			</a>
+		</section>
+		<section>
+			<p> Olá! </p>
+			<p>
+				Eu sou <SoftStrong>Matheus Avellar</SoftStrong>, e esse é um dos meus
+				cantinhos na internet!
+			</p>
+			<p>
+				Se é o que você procura, veja aqui meu
+				<a href="/files/cv-matheusavellar-pt.pdf">currículo</a>.
+			</p>
+		</section>
+		<h2>Quem sou eu</h2>
+		<section>
+			<ul>
+				<li>Cientista da computação e programador, com foco em web;</li>
+				<li>Atualmente engenheiro de dados (mas também front e back end) na Diretoria de Inovação e Tecnologia (DIT) da Secretaria Municipal de Saúde do Rio de Janeiro (SMS);</li>
+				<li>Mestre pelo <a href="https://www.cos.ufrj.br/">PESC</a>/COPPE, na UFRJ;</li>
+				<li>Arqueólogo digital amador;</li>
+				<li>Colecionador de inutilidades;</li>
+				<li>Defensor de moedas de 1 centavo;</li>
+				<li>Evangelista de tênis sem cadarço;</li>
+				<li>Conselheiro de epígrafes;</li>
+				<li>Fã de <a href="https://www.imdb.com/title/tt2543164/">Arrival (2016)</a>.</li>
+			</ul>
+		</section>
+	</section>
+</main>
+<style>
+#_scope-main {
+	& {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		gap: 4rem;
+	}
+	.right {
+		order: 1;
+	}
+	.left {
+		order: 0;
+	}
+	section ~ section {
+		margin-top: 1rem;
+	}
+	.profile img {
+		border-radius: 8px;
+		box-shadow: var(--shadow-elevation-medium);
+	}
+	ul {
+		padding-left: 1.5rem;
+	}
+	ul > li {
+		list-style-type: circle;
+		padding-left: .25rem;
+	}
+	h2 {
+		font-size: 2rem;
+		margin-top: 1em;
+	}
+
+	#rss-symbol, #rss-symbol + * {
+		vertical-align: middle;
+	}
+	#rss-header {
+		font-size: 0.75rem;
+		line-height: 1.5;
+	}
+	#rss-events {
+		list-style: none;
+		padding: 0;
+		max-height: 40rem;
+		max-width: 30rem;
+		overflow-y: scroll;
+	}
+	#rss-events li {
+		display: flex;
+		flex-direction: row;
+		gap: 0.5rem;
+		font-size: 0.75rem;
+	}
+	#rss-events li+li {
+		margin-top: 0.5rem;
+	}
+	#rss-events li > a[href] {
+		display: block;
+		color: inherit;
+		text-decoration: none;
+		background-color: #f7f7f8;
+		padding: 0.25rem 0.5rem;
+		border-radius: 4px;
+		flex-grow: 1;
+	}
+	#rss-events .item-icon {
+		aspect-ratio: 1;
+		height: 1.5rem;
+		-webkit-user-drag: none;
+	}
+	#rss-events li .item-title {
+		display: block;
+		font-weight: 500;
+		max-width: 12rem;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: pre;
+	}
+	#rss-events .item-description:not(:empty) {
+		padding: 0.25rem 0;
+	}
+	#rss-events .item-description p {
+		font-size: inherit;
+	}
+	#rss-events .letterboxd-rating {
+		font-weight: normal;
+		color: #a28900;
+		text-shadow: 1px 1px #fff;
+	}
+	@media screen and (max-width: 700px) {
+		& {
+			grid-template-columns: 1fr;
+		}
+		#rss {
+			max-width: 17rem;
+			float: right;
+		}
+		#rss-events {
+			max-height: 17rem;
+		}
+	}
+}
+</style>
