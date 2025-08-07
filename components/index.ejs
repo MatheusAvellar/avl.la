@@ -162,16 +162,18 @@ function append_rss_element(obj) {
 				if(obj.title == "Created branch" && obj.details.branch == "main")
 					return;
 
-				const branch = obj.details.branch;
-				const repo = obj.details.repository.replaceAll("/", "/\u200C");  // ZWNJ
+				const branch = obj.details.branch.trim();
+				const repo = obj.details.repository
+					.replaceAll("/", "/\u200C")  // ZWNJ
+					.trim();
 				const action_p = document.createElement("p");
 				let text = "";
-				if(branch) {
-					text = `branch '${branch}' on `;
+				if(branch) text = `branch '${branch}' on `;
+				if(repo) text += `repo '${repo}'`;
+				if(text.length > 0) {
+					action_p.textContent = capitalize(text);
+					description.appendChild(action_p);
 				}
-				text += `repo '${repo}'`;
-				action_p.textContent = capitalize(text);
-				description.appendChild(action_p);
 				break;
 			}
 		case "mal": {
