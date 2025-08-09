@@ -15,7 +15,9 @@
 				</div>
 			</div>
 			<ol id="rss-events">
-				<template id="template">
+				<noscript>You'll need JavaScript to load this :(</noscript>
+				<div id="rss-placeholder"></div>
+				<template id="rss-item-template">
 					<li>
 						<img class="item-icon" draggable="false">
 						<a class="item-url">
@@ -45,12 +47,19 @@ function format_dt(datestr) {
 const local_json = ls.get("/eu/rss.json");
 if(!local_json) {
 	console.log("No local JSON; fetching from API");
+	const placeholder = document.getElementById("rss-placeholder");
+	placeholder.textContent = "Loading data...";
+
 	fetch("https://api.avl.la/eu/rss.json").then(r => {
+		placeholder.setAttribute("hidden", "true");
+
 		r.json().then(json => {
 			//                              TTL: 2 hours
 			ls.set("/eu/rss.json", json, { ttl: (2 * 60 * 60) });
 			consume_json(json);
 		});
+	}).catch(() => {
+		placeholder.textContent = "Error fetching data :(";
 	});
 } else {
 	console.log("Local JSON found");
@@ -88,7 +97,7 @@ function consume_json(json) {
 
 function append_rss_element(obj) {
 	const list = document.getElementById("rss-events");
-	const template = document.getElementById("template");
+	const template = document.getElementById("rss-item-template");
 	const clone = template.content.cloneNode(true);
 
 	const a = clone.querySelector("a.item-url");
@@ -157,23 +166,17 @@ function append_rss_element(obj) {
 				icon.src = "/assets/github.svg";
 				icon.title = "GitHub";
 
-				if(obj.title == "Pushed to branch")
-					return;
-				if(obj.title == "Created branch" && obj.details.branch == "main")
-					return;
-
-				const branch = obj.details.branch.trim();
-				const repo = obj.details.repository
-					.replaceAll("/", "/\u200C")  // ZWNJ
-					.trim();
 				const action_p = document.createElement("p");
 				let text = "";
-				if(branch) text = `branch '${branch}' on `;
-				if(repo) text += `repo '${repo}'`;
-				if(text.length > 0) {
-					action_p.textContent = capitalize(text);
-					description.appendChild(action_p);
-				}
+
+				const branch = obj.details.branch
+						.replaceAll("/", "/\u200C")  // ZWNJ
+						.trim();
+				if(branch) text = `branch '${branch}'`;
+				if(text.length > 0) text = ` (${text})`;
+
+				action_p.textContent = obj.details.description + text
+				description.appendChild(action_p);
 				break;
 			}
 		case "mal": {
@@ -286,6 +289,10 @@ function append_rss_element(obj) {
 		max-height: 40rem;
 		max-width: 30rem;
 		overflow-y: scroll;
+	}
+	#rss-events noscript, #rss-placeholder {
+		font-size: 0.75rem;
+		color: #777;
 	}
 	#rss-events li {
 		display: flex;
