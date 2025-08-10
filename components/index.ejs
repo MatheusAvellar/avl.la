@@ -51,8 +51,6 @@ if(!local_json) {
 	placeholder.textContent = "Loading data...";
 
 	fetch("https://api.avl.la/eu/rss.json").then(r => {
-		placeholder.setAttribute("hidden", "true");
-
 		r.json().then(json => {
 			//                              TTL: 2 hours
 			ls.set("/eu/rss.json", json, { ttl: (2 * 60 * 60) });
@@ -64,6 +62,22 @@ if(!local_json) {
 } else {
 	console.log("Local JSON found");
 	consume_json(local_json);
+}
+
+function consume_json(json) {
+	const placeholder = document.getElementById("rss-placeholder");
+
+	const data = json["data"];
+	if(data.length <= 0) {
+		placeholder.textContent = "No recent events!";
+		return
+	}
+
+	const data_last_update = format_dt(json["updated_at"]);
+	console.log(data_last_update, data);
+	document.getElementById("rss-last-updated").textContent = data_last_update;
+	placeholder.setAttribute("hidden", "true");
+	data.forEach(append_rss_element);
 }
 
 function capitalize(str) {
@@ -78,21 +92,12 @@ function get_wiki_scope(str) {
 		return "category page";
 
 	if(/^Draft( talk)?:/.test(str))
-		return "category page";
+		return "draft page";
 
 	if(/^Template( talk)?:/.test(str))
 		return "template";
 
 	return "article";
-}
-
-function consume_json(json) {
-	const data = json["data"];
-	const data_last_update = format_dt(json["updated_at"]);
-	console.log(data_last_update, data);
-	document.getElementById("rss-last-updated").textContent = data_last_update;
-	data.forEach(append_rss_element);
-	// TODO: fallback when no events
 }
 
 function append_rss_element(obj) {
@@ -115,7 +120,11 @@ function append_rss_element(obj) {
 					icon.title = "Wikipedia";
 
 					const action_p = document.createElement("p");
-					action_p.textContent = `Edited ${get_wiki_scope(obj.title)}`;
+					if(obj.details.event == "create-article") {
+						action_p.textContent = `Created ${get_wiki_scope(obj.title)}`;
+					} else {
+						action_p.textContent = `Edited ${get_wiki_scope(obj.title)}`;
+					}
 					description.appendChild(action_p);
 					break;
 				}
@@ -136,6 +145,9 @@ function append_rss_element(obj) {
 					description.appendChild(action_p);
 					break;
 				}
+				default:
+					console.warn("Unknown format for object", obj);
+					break;
 			}
 			break;
 		case "letterboxd": {
@@ -193,7 +205,9 @@ function append_rss_element(obj) {
 			description.appendChild(watch_p);
 			break;
 		}
-		default: break;
+		default:
+			console.warn("Unknown format for object", obj);
+			break;
 	}
 
 	const item_title = clone.querySelector(".item-title");
