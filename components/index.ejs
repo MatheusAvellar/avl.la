@@ -175,22 +175,25 @@ function append_rss_element(obj) {
 			break;
 		}
 		case "github": {
-				icon.src = "/assets/github.svg";
-				icon.title = "GitHub";
+			icon.src = "/assets/github.svg";
+			icon.title = (obj.details.kind == "gist")
+				? "Gist"
+				: "GitHub";
 
-				const action_p = document.createElement("p");
-				let text = "";
-
+			const action_p = document.createElement("p");
+			if(obj.details.kind == "gist") {
+				action_p.textContent = "Created gist";
+			} else {
 				const branch = obj.details.branch
 						.replaceAll("/", "/\u200C")  // ZWNJ
 						.trim();
-				if(branch) text = `branch '${branch}'`;
-				if(text.length > 0) text = ` (${text})`;
-
-				action_p.textContent = obj.details.description + text
-				description.appendChild(action_p);
-				break;
+				action_p.textContent =
+						obj.details.description
+						+ (branch ? ` ('${branch}')` : "");
 			}
+			description.appendChild(action_p);
+			break;
+		}
 		case "mal": {
 			icon.src = "/assets/mal.svg";
 			icon.title = "MyAnimeList";
@@ -212,6 +215,7 @@ function append_rss_element(obj) {
 
 	const item_title = clone.querySelector(".item-title");
 	item_title.textContent = obj.title;
+	item_title.title = obj.title;
 
 	const time = clone.querySelector(".item-datetime");
 	time.setAttribute("datetime", obj.datetime);
