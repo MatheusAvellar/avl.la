@@ -85,17 +85,20 @@ function capitalize(str) {
 }
 
 function get_wiki_scope(str) {
-	if(/^User( talk)?:/.test(str))
+	if(/^User:/.test(str))
 		return "user page";
 
-	if(/^Category( talk)?:/.test(str))
+	if(/^Category:/.test(str))
 		return "category page";
 
-	if(/^Draft( talk)?:/.test(str))
+	if(/^Draft:/.test(str))
 		return "draft page";
 
-	if(/^Template( talk)?:/.test(str))
+	if(/^Template:/.test(str))
 		return "template";
+
+	if(/^.*[Tt]alk:/.test(str))
+		return "talk page";
 
 	return "article";
 }
@@ -184,12 +187,10 @@ function append_rss_element(obj) {
 			if(obj.details.kind == "gist") {
 				action_p.textContent = "Created gist";
 			} else {
-				const branch = obj.details.branch
+				action_p.textContent =
+					obj.details.description
 						.replaceAll("/", "/\u200C")  // ZWNJ
 						.trim();
-				action_p.textContent =
-						obj.details.description
-						+ (branch ? ` ('${branch}')` : "");
 			}
 			description.appendChild(action_p);
 			break;
