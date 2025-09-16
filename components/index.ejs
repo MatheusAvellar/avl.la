@@ -115,7 +115,7 @@ function append_rss_element(obj) {
 	const description = clone.querySelector(".item-description");
 
 	switch(obj.type) {
-		case "wiki":
+		case "wiki": {
 			switch(obj.details.kind) {
 				case "en":
 				case "pt": {
@@ -153,6 +153,7 @@ function append_rss_element(obj) {
 					break;
 			}
 			break;
+		}
 		case "letterboxd": {
 			icon.src = "/assets/letterboxd.svg";
 			icon.title = "Letterboxd";
@@ -169,7 +170,7 @@ function append_rss_element(obj) {
 			rating_p.appendChild(document.createTextNode("Rated: "));
 
 			const rating_span = document.createElement("span");
-			rating_span.className = "letterboxd-rating";
+			rating_span.className = "star-rating";
 			rating_span.textContent =
 				"★".repeat(Math.floor(rating)) + (has_half ? "½" : "");
 			rating_p.appendChild(rating_span);
@@ -207,6 +208,49 @@ function append_rss_element(obj) {
 			watch_p.className = "mal-watched";
 			watch_p.textContent = `Watched ${ep_watched}/${ep_total} (${watch_pct}%)`;
 			description.appendChild(watch_p);
+			break;
+		}
+		case "goodreads": {
+			icon.src = "/assets/goodreads.svg";
+			icon.title = "Goodreads";
+
+			const author = (obj.details.author || "").trim();
+			if(author) {
+				const author_p = document.createElement("p");
+				author_p.textContent = `(by ${author})`;
+				description.appendChild(author_p);
+			}
+
+			const rating = Math.floor(obj.details.rating) || 0;
+			if(rating > 0) {
+				const rating_p = document.createElement("p");
+				rating_p.appendChild(document.createTextNode("Rated: "));
+
+				const rating_span = document.createElement("span");
+				rating_span.className = "star-rating";
+				rating_span.textContent = "★".repeat(rating);
+				rating_p.appendChild(rating_span);
+
+				description.appendChild(rating_p);
+				break;
+			}
+			const shelf = obj.details.shelves;
+			const event = document.createElement("p");
+			switch(shelf) {
+				case "to-read":
+					event.textContent = "Wants to read";
+					break;
+				case "currently-reading":
+					event.textContent = "Is reading";
+					break;
+				case "read":
+					event.textContent = "Has read";
+					break;
+				default:
+					event.textContent = "Added";
+					break;
+			}
+			description.appendChild(event);
 			break;
 		}
 		default:
@@ -350,7 +394,7 @@ function append_rss_element(obj) {
 	#rss-events .item-description p {
 		font-size: inherit;
 	}
-	#rss-events .letterboxd-rating {
+	#rss-events .star-rating {
 		font-weight: normal;
 		color: #a28900;
 		text-shadow: 1px 1px #fff;
