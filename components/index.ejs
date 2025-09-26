@@ -165,17 +165,24 @@ function append_rss_element(obj) {
 			}
 
 			const rating = Number(obj.details.rating) || 0;
-			const has_half = Math.floor(rating) != rating;
-			const rating_p = document.createElement("p");
-			rating_p.appendChild(document.createTextNode("Rated: "));
+			if(rating > 0) {
+				const has_half = Math.floor(rating) != rating;
+				const rating_p = document.createElement("p");
+				rating_p.appendChild(document.createTextNode("Rated: "));
 
-			const rating_span = document.createElement("span");
-			rating_span.className = "star-rating";
-			rating_span.textContent =
-				"★".repeat(Math.floor(rating)) + (has_half ? "½" : "");
-			rating_p.appendChild(rating_span);
+				const rating_span = document.createElement("span");
+				rating_span.className = "star-rating";
+				rating_span.textContent =
+					"★".repeat(Math.floor(rating)) + (has_half ? "½" : "");
+				rating_p.appendChild(rating_span);
 
-			description.appendChild(rating_p);
+				description.appendChild(rating_p);
+				break;
+			}
+
+			const event_p = document.createElement("p");
+			event_p.textContent = "Marked as watched";
+			description.appendChild(event_p);
 			break;
 		}
 		case "github": {
