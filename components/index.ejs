@@ -212,7 +212,6 @@ function append_rss_element(obj) {
 			const watch_pct = Math.floor((ep_watched / ep_total) * 100_00) / 1_00;
 
 			const watch_p = document.createElement("p");
-			watch_p.className = "mal-watched";
 			watch_p.textContent = `Watched ${ep_watched}/${ep_total} (${watch_pct}%)`;
 			description.appendChild(watch_p);
 			break;
@@ -226,6 +225,17 @@ function append_rss_element(obj) {
 				const author_p = document.createElement("p");
 				author_p.textContent = `(by ${author})`;
 				description.appendChild(author_p);
+			}
+
+			if(obj.details.event == "pages-read") {
+				const pages_read = obj.details.pages_read;
+				const pages_total = obj.details.pages_total;
+				const read_pct = Math.floor((pages_read / pages_total) * 100_00) / 1_00;
+
+				const read_p = document.createElement("p");
+				read_p.textContent = `Read ${pages_read}/${pages_total} (${read_pct}%)`;
+				description.appendChild(read_p);
+				break;
 			}
 
 			const rating = Math.floor(obj.details.rating) || 0;
