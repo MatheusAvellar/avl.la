@@ -237,6 +237,12 @@ function append_rss_element(obj) {
 				description.appendChild(read_p);
 				break;
 			}
+			if(obj.details.event == "finished") {
+				const read_p = document.createElement("p");
+				read_p.textContent = `Finished reading`;
+				description.appendChild(read_p);
+				break;
+			}
 
 			const rating = Math.floor(obj.details.rating) || 0;
 			if(rating > 0) {
