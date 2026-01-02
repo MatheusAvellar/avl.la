@@ -157,6 +157,12 @@ function append_rss_element(obj) {
 		case "letterboxd": {
 			icon.src = "/assets/letterboxd.svg";
 			icon.title = "Letterboxd";
+			if(obj.details.event == "list") {
+				const event_p = document.createElement("p");
+				event_p.textContent = "Created list";
+				description.appendChild(event_p);
+				break;
+			}
 
 			if(obj.details.is_rewatch) {
 				const rewatch_p = document.createElement("p");
