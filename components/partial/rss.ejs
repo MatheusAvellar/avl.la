@@ -1,0 +1,373 @@
+<section id="rss">
+	<div id="rss-header">
+		<div>
+			<img id="rss-symbol" alt="Símbolo de RSS" width="16" height="16" src="./assets/rss.svg">
+			<strong class="soft">Meus rastros online</strong>
+		</div>
+		<div>
+			<span>
+				Atualizado 2x por dia!<br>
+				Última atualização:
+			</span>
+			<time id="rss-last-updated"></time>
+		</div>
+	</div>
+	<ol id="rss-events">
+		<noscript>You'll need JavaScript to load this :(</noscript>
+		<div id="rss-placeholder"></div>
+		<template id="rss-item-template">
+			<li>
+				<img class="item-icon" draggable="false">
+				<a class="item-url">
+					<div class="item-title"></div>
+					<div class="item-description"></div>
+					<div><time class="item-datetime"></time></div>
+				</a>
+			</li>
+		</template>
+	</ol>
+	<script>
+(function() {
+	const months = [
+		"jan", "fev", "mar",
+		"abr", "mai", "jun",
+		"jul", "ago", "set",
+		"out", "nov", "dez"
+	];
+	function format_dt(datestr) {
+		const dt = new Date(datestr)
+		const h = String(dt.getHours()).padStart(2, "0");
+		const m = String(dt.getMinutes()).padStart(2, "0");
+
+		return `${h}:${m} · ${dt.getDate()}/${months[dt.getMonth()]}/${dt.getFullYear()}`;
+	}
+	// localstorage-slim.js
+	const local_json = ls.get("/eu/rss.json");
+	if(!local_json) {
+		console.log("No local JSON; fetching from API");
+		const placeholder = document.getElementById("rss-placeholder");
+		placeholder.textContent = "Loading data...";
+
+		fetch("https://api.avl.la/eu/rss.json").then(r => {
+			r.json().then(json => {
+				//                              TTL: 2 hours
+				ls.set("/eu/rss.json", json, { ttl: (2 * 60 * 60) });
+				consume_json(json);
+			});
+		}).catch(() => {
+			placeholder.textContent = "Error fetching data :(";
+		});
+	} else {
+		console.log("Local JSON found");
+		consume_json(local_json);
+	}
+
+	function consume_json(json) {
+		const placeholder = document.getElementById("rss-placeholder");
+
+		const data = json["data"];
+		if(data.length <= 0) {
+			placeholder.textContent = "No recent events!";
+			return
+		}
+
+		const data_last_update = format_dt(json["updated_at"]);
+		console.log(data_last_update, data);
+		document.getElementById("rss-last-updated").textContent = data_last_update;
+		placeholder.setAttribute("hidden", "true");
+		data.forEach(append_rss_element);
+	}
+
+	function capitalize(str) {
+		return String(str).replace(/^\p{Ll}/u, c => c.toUpperCase());
+	}
+
+	function get_wiki_scope(str) {
+		if(/^User:/.test(str))
+			return "user page";
+
+		if(/^Category:/.test(str))
+			return "category page";
+
+		if(/^Draft:/.test(str))
+			return "draft page";
+
+		if(/^Template:/.test(str))
+			return "template";
+
+		if(/^.*[Tt]alk:/.test(str))
+			return "talk page";
+
+		return "article";
+	}
+
+	function append_rss_element(obj) {
+		const list = document.getElementById("rss-events");
+		const template = document.getElementById("rss-item-template");
+		const clone = template.content.cloneNode(true);
+
+		const a = clone.querySelector("a.item-url");
+		a.href = obj.url;
+
+		const icon = clone.querySelector("img.item-icon");
+		const description = clone.querySelector(".item-description");
+
+		switch(obj.type) {
+			case "wiki": {
+				switch(obj.details.kind) {
+					case "en":
+					case "pt": {
+						icon.src = "/assets/wikipedia.svg";
+						icon.title = "Wikipedia";
+
+						const action_p = document.createElement("p");
+						if(obj.details.event == "create-article") {
+							action_p.textContent = `Created ${get_wiki_scope(obj.title)}`;
+						} else {
+							action_p.textContent = `Edited ${get_wiki_scope(obj.title)}`;
+						}
+						description.appendChild(action_p);
+						break;
+					}
+					case "commons": {
+						icon.src = "/assets/commons.svg";
+						icon.title = "Wikimedia Commons";
+
+						const action_p = document.createElement("p");
+						if(obj.title.startsWith("File:")) {
+							if(obj.details.description.startsWith("Uploaded a work")) {
+								action_p.textContent = "Uploaded file";
+							} else {
+								action_p.textContent = "Edited file page";
+							}
+						} else {
+							action_p.textContent = `Edited ${get_wiki_scope(obj.title)}`;
+						}
+						description.appendChild(action_p);
+						break;
+					}
+					default:
+						console.warn("Unknown format for object", obj);
+						break;
+				}
+				break;
+			}
+			case "letterboxd": {
+				icon.src = "/assets/letterboxd.svg";
+				icon.title = "Letterboxd";
+				if(obj.details.event == "list") {
+					const event_p = document.createElement("p");
+					event_p.textContent = "Created list";
+					description.appendChild(event_p);
+					break;
+				}
+
+				if(obj.details.is_rewatch) {
+					const rewatch_p = document.createElement("p");
+					rewatch_p.textContent = "(rewatch)";
+					description.appendChild(rewatch_p);
+				}
+
+				const rating = Number(obj.details.rating) || 0;
+				if(rating > 0) {
+					const has_half = Math.floor(rating) != rating;
+					const rating_p = document.createElement("p");
+					rating_p.appendChild(document.createTextNode("Rated: "));
+
+					const rating_span = document.createElement("span");
+					rating_span.className = "star-rating";
+					rating_span.textContent =
+						"★".repeat(Math.floor(rating)) + (has_half ? "½" : "");
+					rating_p.appendChild(rating_span);
+
+					description.appendChild(rating_p);
+					break;
+				}
+
+				const event_p = document.createElement("p");
+				event_p.textContent = "Marked as watched";
+				description.appendChild(event_p);
+				break;
+			}
+			case "github": {
+				icon.src = "/assets/github.svg";
+				icon.title = (obj.details.kind == "gist")
+					? "Gist"
+					: "GitHub";
+
+				const action_p = document.createElement("p");
+				if(obj.details.kind == "gist") {
+					action_p.textContent = "Created gist";
+				} else {
+					action_p.textContent =
+						obj.details.description
+							.replaceAll("/", "/\u200C")  // ZWNJ
+							.trim();
+				}
+				description.appendChild(action_p);
+				break;
+			}
+			case "mal": {
+				icon.src = "/assets/mal.svg";
+				icon.title = "MyAnimeList";
+
+				const ep_watched = obj.details.episodes_watched;
+				const ep_total = obj.details.episodes_total;
+				const watch_pct = Math.floor((ep_watched / ep_total) * 100_00) / 1_00;
+
+				const watch_p = document.createElement("p");
+				watch_p.textContent = `Watched ${ep_watched}/${ep_total} (${watch_pct}%)`;
+				description.appendChild(watch_p);
+				break;
+			}
+			case "goodreads": {
+				icon.src = "/assets/goodreads.svg";
+				icon.title = "Goodreads";
+
+				const author = (obj.details.author || "").trim();
+				if(author) {
+					const author_p = document.createElement("p");
+					author_p.textContent = `(by ${author})`;
+					description.appendChild(author_p);
+				}
+
+				if(obj.details.event == "pages-read") {
+					const pages_read = obj.details.pages_read;
+					const pages_total = obj.details.pages_total;
+					const read_pct = Math.floor((pages_read / pages_total) * 100_00) / 1_00;
+
+					const read_p = document.createElement("p");
+					read_p.textContent = `Read ${pages_read}/${pages_total} (${read_pct}%)`;
+					description.appendChild(read_p);
+					break;
+				}
+				if(obj.details.event == "finished") {
+					const read_p = document.createElement("p");
+					read_p.textContent = `Finished reading`;
+					description.appendChild(read_p);
+					break;
+				}
+
+				const rating = Math.floor(obj.details.rating) || 0;
+				if(rating > 0) {
+					const rating_p = document.createElement("p");
+					rating_p.appendChild(document.createTextNode("Rated: "));
+
+					const rating_span = document.createElement("span");
+					rating_span.className = "star-rating";
+					rating_span.textContent = "★".repeat(rating);
+					rating_p.appendChild(rating_span);
+
+					description.appendChild(rating_p);
+					break;
+				}
+				const shelf = obj.details.shelves;
+				const event = document.createElement("p");
+				switch(shelf) {
+					case "to-read":
+						event.textContent = "Wants to read";
+						break;
+					case "currently-reading":
+						event.textContent = "Is reading";
+						break;
+					case "read":
+						event.textContent = "Has read";
+						break;
+					default:
+						event.textContent = "Added";
+						break;
+				}
+				description.appendChild(event);
+				break;
+			}
+			default:
+				console.warn("Unknown format for object", obj);
+				break;
+		}
+
+		const item_title = clone.querySelector(".item-title");
+		item_title.textContent = obj.title;
+		item_title.title = obj.title;
+
+		const time = clone.querySelector(".item-datetime");
+		time.setAttribute("datetime", obj.datetime);
+		time.textContent = format_dt(obj.datetime);
+
+		list.appendChild(clone);
+	}
+})();
+	</script>
+</section>
+<style>
+#rss {
+	#rss-symbol, #rss-symbol + * {
+		vertical-align: middle;
+	}
+	#rss-header {
+		font-size: 0.75rem;
+		line-height: 1.5;
+	}
+	#rss-events {
+		list-style: none;
+		padding: 0;
+		max-height: 40rem;
+		max-width: 30rem;
+		overflow-y: scroll;
+	}
+	#rss-events noscript, #rss-placeholder {
+		font-size: 0.75rem;
+		color: #777;
+	}
+	#rss-events li {
+		display: flex;
+		flex-direction: row;
+		gap: 0.5rem;
+		font-size: 0.75rem;
+	}
+	#rss-events li+li {
+		margin-top: 0.5rem;
+	}
+	#rss-events li > a[href] {
+		display: block;
+		color: inherit;
+		text-decoration: none;
+		background-color: #f7f7f8;
+		padding: 0.25rem 0.5rem;
+		border-radius: 4px;
+		flex-grow: 1;
+	}
+	#rss-events .item-icon {
+		aspect-ratio: 1;
+		height: 1.5rem;
+		-webkit-user-drag: none;
+	}
+	#rss-events li .item-title {
+		display: block;
+		font-weight: 500;
+		max-width: 12rem;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: pre;
+	}
+	#rss-events .item-description:not(:empty) {
+		padding: 0.25rem 0;
+	}
+	#rss-events .item-description p {
+		font-size: inherit;
+	}
+	#rss-events .star-rating {
+		font-weight: normal;
+		color: #a28900;
+		text-shadow: 1px 1px #fff;
+	}
+	@media screen and (max-width: 700px) {
+		& {
+			max-width: 17rem;
+			float: right;
+		}
+		#rss-events {
+			max-height: 17rem;
+		}
+	}
+}
+</style>
